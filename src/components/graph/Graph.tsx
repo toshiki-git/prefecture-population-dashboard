@@ -6,6 +6,11 @@ import React, { useRef } from "react";
 import { GraphData } from "@/types/GraphTypes";
 
 const Graph = ({ dataList }: { dataList: GraphData[] }) => {
+  const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
+
+  if (dataList.length === 0) {
+    return <div>都道府県を選択してください。</div>;
+  }
   const seriesData: Highcharts.SeriesOptionsType[] = [];
 
   for (const data of dataList) {
@@ -22,11 +27,11 @@ const Graph = ({ dataList }: { dataList: GraphData[] }) => {
 
   const options: Highcharts.Options = {
     title: {
-      text: "総人口",
+      text: dataList[0].label,
     },
     xAxis: {
       title: {
-        text: "Year",
+        text: "年",
       },
       categories: categories,
     },
@@ -37,7 +42,6 @@ const Graph = ({ dataList }: { dataList: GraphData[] }) => {
     },
     series: seriesData,
   };
-  const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
 
   return (
     <HighchartsReact
