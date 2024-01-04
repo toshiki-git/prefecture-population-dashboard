@@ -1,25 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { fetchPrefectures } from "@/api/fetchPrefectures";
-import { Prefecture } from "@/types/PrefectureTypes";
+import React, { useState } from "react";
 import Checkbox from "@/components/prefectures/Checkbox";
+import Graph from "@/components/graph/Graph";
+import usePrefectures from "@/hooks/usePrefectures";
+import useGraphData from "@/hooks/useGraphData";
 
 const PrefectureList = () => {
-  const [prefs, setPrefs] = useState<Prefecture[]>([]);
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
-
-  useEffect(() => {
-    const getPrefectures = async () => {
-      try {
-        const response = await fetchPrefectures();
-        setPrefs(response.result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getPrefectures();
-  }, []);
+  const { prefs } = usePrefectures();
+  const { graphData } = useGraphData(selectedPrefs, prefs);
 
   const handleCheckboxChange = (prefCode: number, isChecked: boolean): void => {
     setSelectedPrefs((prevSelectedPrefs) => {
@@ -44,7 +33,7 @@ const PrefectureList = () => {
           />
         ))}
       </div>
-      <div>{selectedPrefs.map((prefCode) => prefCode + " ")}</div>
+      <Graph dataList={graphData} />
     </div>
   );
 };
