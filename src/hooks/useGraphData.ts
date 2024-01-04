@@ -4,7 +4,11 @@ import { fetchPopulation } from "@/api/fetchPopulation";
 import { Prefecture } from "@/types/PrefectureTypes";
 import { GraphData } from "@/types/GraphTypes";
 
-const useGraphData = (selectedPrefs: number[], prefs: Prefecture[]) => {
+const useGraphData = (
+  selectedPrefs: number[],
+  prefs: Prefecture[],
+  label: string
+) => {
   const [graphData, setGraphData] = useState<GraphData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -15,9 +19,13 @@ const useGraphData = (selectedPrefs: number[], prefs: Prefecture[]) => {
         const dataPromises = selectedPrefs.map(async (prefCode) => {
           const response = await fetchPopulation(String(prefCode));
           const pref = prefs.find((p) => p.prefCode === prefCode);
+          const matchedData = response.result.data.find(
+            (d) => d.label === label
+          );
           return {
             prefName: pref ? pref.prefName : "non-existent",
-            data: response.result.data[0].data,
+            label: label,
+            data: matchedData ? matchedData.data : [],
           };
         });
 
@@ -37,7 +45,7 @@ const useGraphData = (selectedPrefs: number[], prefs: Prefecture[]) => {
     if (selectedPrefs.length >= 0) {
       getPopulationData();
     }
-  }, [selectedPrefs, prefs]);
+  }, [selectedPrefs, prefs, label]);
 
   return { graphData, loading, error };
 };
