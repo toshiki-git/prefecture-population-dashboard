@@ -5,7 +5,7 @@ import Highcharts from "highcharts";
 import React, { useRef } from "react";
 import { GraphData } from "@/types/GraphTypes";
 
-const Graph = ({ dataList }: GraphData) => {
+const Graph = ({ dataList }: { dataList: GraphData[] }) => {
   const seriesData: Highcharts.SeriesOptionsType[] = [];
 
   for (const data of dataList) {
