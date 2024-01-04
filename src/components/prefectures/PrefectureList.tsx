@@ -4,11 +4,13 @@ import Checkbox from "@/components/prefectures/Checkbox";
 import Graph from "@/components/graph/Graph";
 import usePrefectures from "@/hooks/usePrefectures";
 import useGraphData from "@/hooks/useGraphData";
+import CategorySelector from "@/components/graph/CategorySelector";
 
 const PrefectureList = () => {
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("総人口");
   const { prefs } = usePrefectures();
-  const { graphData } = useGraphData(selectedPrefs, prefs);
+  const { graphData } = useGraphData(selectedPrefs, prefs, selectedCategory);
 
   const handleCheckboxChange = (prefCode: number, isChecked: boolean): void => {
     setSelectedPrefs((prevSelectedPrefs) => {
@@ -34,6 +36,7 @@ const PrefectureList = () => {
         ))}
       </div>
       <Graph dataList={graphData} />
+      <CategorySelector onChange={setSelectedCategory} />
     </div>
   );
 };
