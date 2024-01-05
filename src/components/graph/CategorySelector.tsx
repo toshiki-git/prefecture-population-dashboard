@@ -1,17 +1,26 @@
-"use client";
-import React from "react";
+import { ChangeEvent } from "react";
 
-interface Props {
+interface CategorySelectorProps {
+  categories: string[];
   onChange: (value: string) => void;
+  ariaLabel?: string;
 }
 
-const CategorySelector = ({ onChange }: Props) => {
+const CategorySelector = ({
+  categories,
+  onChange,
+  ariaLabel = "カテゴリーを選択",
+}: CategorySelectorProps) => {
   return (
-    <select onChange={(e) => onChange(e.target.value)}>
-      <option value="総人口">総人口</option>
-      <option value="年少人口">年少人口</option>
-      <option value="生産年齢人口">生産年齢人口</option>
-      <option value="老年人口">老年人口</option>
+    <select
+      aria-label={ariaLabel}
+      onChange={(e: ChangeEvent<HTMLSelectElement>) => onChange(e.target.value)}
+    >
+      {categories.map((category) => (
+        <option key={category} value={category}>
+          {category}
+        </option>
+      ))}
     </select>
   );
 };
