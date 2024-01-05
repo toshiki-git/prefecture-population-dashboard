@@ -1,9 +1,9 @@
-import PrefectureList from "@/components/prefectures/PrefectureList";
+import Main from "@/components/Main";
 
 export default function Home() {
   return (
     <main>
-      <PrefectureList />
+      <Main />
     </main>
   );
 }
