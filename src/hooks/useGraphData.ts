@@ -41,10 +41,7 @@ const useGraphData = (
         setLoading(false);
       }
     };
-
-    if (selectedPrefs.length >= 0) {
-      getPopulationData();
-    }
+    getPopulationData();
   }, [selectedPrefs, prefs, label]);
 
   return { graphData, loading, error };
