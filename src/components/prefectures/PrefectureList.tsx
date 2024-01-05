@@ -1,5 +1,6 @@
 import Checkbox from "@/components/prefectures/Checkbox";
 import { Prefecture } from "@/types/PrefectureTypes";
+import styles from "./PrefectureList.module.css";
 
 interface PrefectureListProps {
   prefs: Prefecture[];
@@ -23,16 +24,17 @@ const PrefectureList = ({
   };
 
   return (
-    <div>
+    <div className={styles.prefectureList}>
       {prefs.map((pref) => (
-        <Checkbox
-          key={pref.prefCode}
-          label={pref.prefName}
-          isChecked={selectedSet.has(pref.prefCode)}
-          onCheck={(isChecked) =>
-            handleCheckboxChange(pref.prefCode, isChecked)
-          }
-        />
+        <div key={pref.prefCode} className={styles.checkboxItem}>
+          <Checkbox
+            label={pref.prefName}
+            isChecked={selectedSet.has(pref.prefCode)}
+            onCheck={(isChecked) =>
+              handleCheckboxChange(pref.prefCode, isChecked)
+            }
+          />
+        </div>
       ))}
     </div>
   );
