@@ -4,6 +4,7 @@ import PrefectureList from "@/components/prefectures/PrefectureList";
 import useGraphData from "@/hooks/useGraphData";
 import usePrefectures from "@/hooks/usePrefectures";
 import GraphContainer from "./graph/GraphContainer";
+import Title from "./common/Title";
 
 const Main = () => {
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
@@ -19,6 +20,7 @@ const Main = () => {
 
   return (
     <div>
+      <Title title="都道府県別人口推移" />
       <PrefectureList
         setSelectedPrefs={setSelectedPrefs}
         selectedPrefs={selectedPrefs}
