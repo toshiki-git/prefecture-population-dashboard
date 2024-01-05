@@ -1,42 +1,39 @@
-"use client";
-import React, { useState } from "react";
 import Checkbox from "@/components/prefectures/Checkbox";
-import Graph from "@/components/graph/Graph";
-import usePrefectures from "@/hooks/usePrefectures";
-import useGraphData from "@/hooks/useGraphData";
-import CategorySelector from "@/components/graph/CategorySelector";
+import { Prefecture } from "@/types/PrefectureTypes";
 
-const PrefectureList = () => {
-  const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>("総人口");
-  const { prefs } = usePrefectures();
-  const { graphData } = useGraphData(selectedPrefs, prefs, selectedCategory);
+interface PrefectureListProps {
+  prefs: Prefecture[];
+  selectedPrefs: number[];
+  setSelectedPrefs: React.Dispatch<React.SetStateAction<number[]>>;
+}
 
-  const handleCheckboxChange = (prefCode: number, isChecked: boolean): void => {
-    setSelectedPrefs((prevSelectedPrefs) => {
-      if (isChecked) {
-        return [...prevSelectedPrefs, prefCode];
-      } else {
-        return prevSelectedPrefs.filter((code) => code !== prefCode);
-      }
-    });
+const PrefectureList = ({
+  prefs,
+  selectedPrefs,
+  setSelectedPrefs,
+}: PrefectureListProps) => {
+  const selectedSet = new Set(selectedPrefs);
+
+  const handleCheckboxChange = (prefCode: number, isChecked: boolean) => {
+    setSelectedPrefs((prevSelectedPrefs) =>
+      isChecked
+        ? [...prevSelectedPrefs, prefCode]
+        : prevSelectedPrefs.filter((code) => code !== prefCode)
+    );
   };
 
   return (
     <div>
-      <div>
-        {prefs.map((pref) => (
-          <Checkbox
-            key={pref.prefCode}
-            label={pref.prefName}
-            onCheck={(isChecked) =>
-              handleCheckboxChange(pref.prefCode, isChecked)
-            }
-          />
-        ))}
-      </div>
-      <Graph dataList={graphData} />
-      <CategorySelector onChange={setSelectedCategory} />
+      {prefs.map((pref) => (
+        <Checkbox
+          key={pref.prefCode}
+          label={pref.prefName}
+          isChecked={selectedSet.has(pref.prefCode)}
+          onCheck={(isChecked) =>
+            handleCheckboxChange(pref.prefCode, isChecked)
+          }
+        />
+      ))}
     </div>
   );
 };
