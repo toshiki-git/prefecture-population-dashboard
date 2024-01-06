@@ -18,7 +18,9 @@ const GraphContainer = ({
     <div>
       <SubTitle subTitle="人口推移グラフ" />
       <Graph dataList={graphData} />
-      <CategorySelector categories={categories} onChange={onCategoryChange} />
+      {graphData.length > 0 && (
+        <CategorySelector categories={categories} onChange={onCategoryChange} />
+      )}
     </div>
   );
 };
