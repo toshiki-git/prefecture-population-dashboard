@@ -1,6 +1,7 @@
-import CategorySelector from "@/components/graph/CategorySelector";
+import CategoryTab from "@/components/graph/CategoryTab";
 import Graph from "@/components/graph/Graph";
 import { GraphData } from "@/types/GraphTypes";
+import SubTitle from "@/components/common/SubTitle";
 
 interface GraphContainerProps {
   graphData: GraphData[];
@@ -15,8 +16,11 @@ const GraphContainer = ({
 }: GraphContainerProps) => {
   return (
     <div>
+      <SubTitle subTitle="人口推移グラフ" />
+      {graphData.length > 0 && (
+        <CategoryTab categories={categories} onChange={onCategoryChange} />
+      )}
       <Graph dataList={graphData} />
-      <CategorySelector categories={categories} onChange={onCategoryChange} />
     </div>
   );
 };

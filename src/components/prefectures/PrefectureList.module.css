@@ -1,0 +1,45 @@
+.prefectureList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  background-color: lavender;
+  border-radius: 8px;
+}
+
+.checkboxItem {
+  flex-basis: calc(50% - 10px);
+  box-sizing: border-box;
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.checkboxItem:hover {
+  background-color: paleturquoise;
+}
+
+@media (min-width: 550px) {
+  .checkboxItem {
+    flex-basis: calc(33.333% - 10px);
+  }
+}
+
+@media (min-width: 780px) {
+  .checkboxItem {
+    flex-basis: calc(20% - 10px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .checkboxItem {
+    flex-basis: calc(14.286% - 10px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .checkboxItem {
+    flex-basis: calc(10% - 10px);
+  }
+}

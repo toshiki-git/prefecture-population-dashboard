@@ -1,0 +1,20 @@
+.tabContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tabButtonActive {
+  border-bottom: 2px solid black;
+  font-weight: bold;
+}
