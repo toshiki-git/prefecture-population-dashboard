@@ -1,4 +1,4 @@
-import CategorySelector from "@/components/graph/CategorySelector";
+import CategoryTab from "@/components/graph/CategoryTab";
 import Graph from "@/components/graph/Graph";
 import { GraphData } from "@/types/GraphTypes";
 import SubTitle from "@/components/common/SubTitle";
@@ -17,10 +17,10 @@ const GraphContainer = ({
   return (
     <div>
       <SubTitle subTitle="人口推移グラフ" />
-      <Graph dataList={graphData} />
       {graphData.length > 0 && (
-        <CategorySelector categories={categories} onChange={onCategoryChange} />
+        <CategoryTab categories={categories} onChange={onCategoryChange} />
       )}
+      <Graph dataList={graphData} />
     </div>
   );
 };
