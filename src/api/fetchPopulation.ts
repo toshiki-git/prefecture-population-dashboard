@@ -13,7 +13,7 @@ export const fetchPopulation = async (
       headers: {
         "X-API-KEY": apiKey,
       },
-      cache: "force-cache", //SSG
+      cache: "force-cache",
     });
 
     if (!response.ok) {
