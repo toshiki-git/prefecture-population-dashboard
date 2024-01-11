@@ -1,7 +1,7 @@
+import Highcharts from "highcharts";
 import { render, screen } from "@testing-library/react";
 import Graph from "@/components/graph/Graph";
 import mockGraphData from "../../mocks/mockGraphData";
-import Highcharts from "highcharts";
 
 beforeAll(() => {
   Highcharts.setOptions({

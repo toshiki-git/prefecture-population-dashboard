@@ -1,4 +1,3 @@
-// hooks/usePopulationData.ts
 import { useState, useEffect } from "react";
 import { fetchPopulation } from "@/api/fetchPopulation";
 import { Prefecture } from "@/types/PrefectureTypes";

@@ -10,7 +10,7 @@ export const fetchPrefectures = async (): Promise<PrefecturesApiResponse> => {
       headers: {
         "X-API-KEY": apiKey,
       },
-      cache: "force-cache", //SSG
+      cache: "force-cache",
     });
 
     if (!response.ok) {

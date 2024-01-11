@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import PrefectureList from "@/components/prefectures/PrefectureList";
 import useGraphData from "@/hooks/useGraphData";
 import usePrefectures from "@/hooks/usePrefectures";
-import GraphContainer from "./graph/GraphContainer";
-import Title from "./common/Title";
+import PrefectureList from "@/components/prefectures/PrefectureList";
+import GraphContainer from "@/components/graph/GraphContainer";
+import Title from "@/components/common/Title";
 
 const Main = () => {
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);

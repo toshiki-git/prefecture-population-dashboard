@@ -1,5 +1,5 @@
-import Checkbox from "@/components/prefectures/Checkbox";
 import { Prefecture } from "@/types/PrefectureTypes";
+import Checkbox from "@/components/prefectures/Checkbox";
 import SubTitle from "@/components/common/SubTitle";
 import styles from "./PrefectureList.module.css";
 
