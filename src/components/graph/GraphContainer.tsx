@@ -1,6 +1,6 @@
+import { GraphData } from "@/types/GraphTypes";
 import CategoryTab from "@/components/graph/CategoryTab";
 import Graph from "@/components/graph/Graph";
-import { GraphData } from "@/types/GraphTypes";
 import SubTitle from "@/components/common/SubTitle";
 
 interface GraphContainerProps {

@@ -1,6 +1,6 @@
-import HighchartsReact from "highcharts-react-official";
+import { useRef } from "react";
 import Highcharts from "highcharts";
-import React, { useRef } from "react";
+import HighchartsReact from "highcharts-react-official";
 import { GraphData } from "@/types/GraphTypes";
 import { transformDataForHighcharts } from "@/utils/transformDataForHighcharts";
 import style from "./Graph.module.css";

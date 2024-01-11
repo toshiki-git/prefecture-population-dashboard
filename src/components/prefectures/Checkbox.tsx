@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import styles from "./Checkbox.module.css";
+import style from "./Checkbox.module.css";
 
 interface CheckboxProps {
   label: string;
@@ -11,7 +11,7 @@ const Checkbox = ({ label, isChecked, onCheck }: CheckboxProps) => {
   return (
     <label>
       <input
-        className={styles.checkboxInput}
+        className={style.checkboxInput}
         type="checkbox"
         checked={isChecked}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
