@@ -32,6 +32,7 @@ const Main = ({ prefs }: props) => {
       <GraphContainer
         graphData={graphData}
         categories={categories}
+        initialCategories={selectedCategory}
         onCategoryChange={setSelectedCategory}
       />
     </div>
