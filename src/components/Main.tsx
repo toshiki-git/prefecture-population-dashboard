@@ -1,15 +1,18 @@
 "use client";
 import { useState } from "react";
 import useGraphData from "@/hooks/useGraphData";
-import usePrefectures from "@/hooks/usePrefectures";
 import PrefectureList from "@/components/prefectures/PrefectureList";
 import GraphContainer from "@/components/graph/GraphContainer";
 import Title from "@/components/common/Title";
+import { Prefecture } from "@/types/PrefectureTypes";
 
-const Main = () => {
+interface props {
+  prefs: Prefecture[];
+}
+
+const Main = ({ prefs }: props) => {
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("総人口");
-  const { prefs } = usePrefectures();
   const { graphData } = useGraphData(selectedPrefs, prefs, selectedCategory);
   const categories: string[] = [
     "総人口",
@@ -29,6 +32,7 @@ const Main = () => {
       <GraphContainer
         graphData={graphData}
         categories={categories}
+        initialCategories={selectedCategory}
         onCategoryChange={setSelectedCategory}
       />
     </div>

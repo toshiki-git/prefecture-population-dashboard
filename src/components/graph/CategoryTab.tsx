@@ -3,11 +3,17 @@ import styles from "./CategoryTab.module.css";
 
 interface CategoryTabsProps {
   categories: string[];
+  initialCategories: string;
   onChange: (value: string) => void;
 }
 
-const CategoryTabs = ({ categories, onChange }: CategoryTabsProps) => {
-  const [activeCategory, setActiveCategory] = useState<string>(categories[0]);
+const CategoryTabs = ({
+  categories,
+  initialCategories,
+  onChange,
+}: CategoryTabsProps) => {
+  const [activeCategory, setActiveCategory] =
+    useState<string>(initialCategories);
 
   const handleTabClick = (category: string) => {
     setActiveCategory(category);
